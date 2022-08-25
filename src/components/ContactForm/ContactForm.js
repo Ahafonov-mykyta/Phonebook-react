@@ -1,15 +1,21 @@
 import {useState} from "react";
 import { nanoid } from 'nanoid';
+import { addContact } from '../../store/Reducer';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export default function ContactForm ({addToContacts}) {
      const [number, setNumber] = useState('');
      const [name, setName] = useState('');
+     const store = useSelector(state => state);
+     
 
+     const dispatch = useDispatch();
     const handleSubmit = event => {
         event.preventDefault();
         const contact = { id: nanoid(), name: name, number: number }
-        addToContacts(contact)
+        // addToContacts(contact)
+        dispatch(addContact(contact))
 
         setNumber('')
         setName('')

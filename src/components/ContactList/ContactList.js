@@ -1,7 +1,10 @@
 import ContactListItem from "./Contact";
+import { useSelector } from "react-redux";
 
-export default function ContactList ({contacts, filter, onDelete}){
+export default function ContactList ( {filter, onDelete}){
 
+    const contacts = useSelector(state => state.reducer);
+    
     if(filter !== ''){
         return;
     }
